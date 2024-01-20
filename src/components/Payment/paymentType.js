@@ -17,19 +17,21 @@ function PaymentType() {
 
   return (
     <Layout>
-        <div class="payment-header container h-0 w-75">
-            <h1>Online Payment</h1>
+      <div class="text-center container mb-5">
+        <h1>Online Payment</h1>
+      </div>
+      <div class="payment-options container text-center">
+        <h4><label htmlFor="paymentType">Payment Type</label></h4>
+        <select class="form-select" name="paymentType" id="paymentType" value={selectedPaymentType} onChange={handlePaymentTypeChange}>
+          <option value="">Select Payment Type</option>
+          <option value="fee">Tuition Fee, Hostel Charges, and University Dues</option>
+          <option value="testFee">Test Fee</option>
+          <option value="clearanceFee">Clearance Fee</option>
+        </select>
+        <div className='d-flex justify-content-center'>
+          <button class="btn w-50 btn-dark" type="button" onClick={< Navigate to='/payment-details' />}>Submit</button>
         </div>
-        <div class="payment-options container text-center">
-            <h4><label htmlFor="paymentType">Payment Type</label></h4>
-            <select class="form-select" name="paymentType" id="paymentType" value={selectedPaymentType} onChange={handlePaymentTypeChange}>
-                <option value="">Select Payment Type</option>
-                <option value="fee">Tuition Fee, Hostel Charges, and University Dues</option>
-                <option value="testFee">Test Fee</option>
-                <option value="clearanceFee">Clearance Fee</option>
-            </select>
-            <button class="btn btn-dark" type="button" onClick={<Navigate to='/payment-details' />}>Submit</button>
-        </div>
+      </div>
     </Layout>
   );
 }

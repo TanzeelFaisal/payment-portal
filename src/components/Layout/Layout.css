@@ -1,9 +1,10 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: space-between; */
     /* align-items: center; */
     height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .container {
@@ -21,4 +22,13 @@
     height: 10%;
     background-color: rgb(13, 77, 167);
     width: 100%;
+}
+
+.main-container {
+    min-height: 80vh;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

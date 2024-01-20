@@ -4,7 +4,9 @@ import './Layout.css';
 const Layout = ({ children }) => (
   <div class="layout">
     <div class="header"/>
-    {children}
+    <div className='main-container'>
+      {children}
+    </div>
     <div class="footer"/>
   </div>
 );

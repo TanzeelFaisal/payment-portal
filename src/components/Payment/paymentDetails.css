@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     margin: 0;
     height: 100vh;
 }
@@ -11,4 +11,13 @@ body {
 
 button {
     margin-top: 10px;
+}
+
+.details-container label {
+    margin-left: 10px;
+    letter-spacing: 1px;
+}
+
+.details-container span {
+    letter-spacing: 2px;
 }
