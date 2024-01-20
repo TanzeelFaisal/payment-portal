@@ -1,0 +1,24 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 100vh;
+}
+
+.container {
+    border: solid 1px rgb(32, 29, 29);
+    padding: 20px 60px;
+    width: 60vw;
+}
+
+.h-0 {
+    padding: 0px;
+}
+
+.header,
+.footer {
+    height: 10%;
+    background-color: rgb(13, 77, 167);
+    width: 100%;
+}
