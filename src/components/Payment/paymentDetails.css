@@ -4,19 +4,9 @@ body {
     height: 100vh;
 }
 
-.payment-header {
-    text-align: center;
-    padding: 0px;
-    margin-bottom: -5%;
-}
-
-.payment-options {
+.row {
     display: flex;
-    flex-direction: column;
-}
-
-.payment-options label {
-margin-bottom: 5px;
+    /* flex-direction: row; */
 }
 
 button {
