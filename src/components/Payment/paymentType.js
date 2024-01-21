@@ -20,7 +20,7 @@ function PaymentType() {
       <div class="text-center container mb-5">
         <h1>Online Payment</h1>
       </div>
-      <div class="payment-options container text-center">
+      <div class="text-center container">
         <h4><label htmlFor="paymentType">Payment Type</label></h4>
         <select class="form-select" name="paymentType" id="paymentType" value={selectedPaymentType} onChange={handlePaymentTypeChange}>
           <option value="">Select Payment Type</option>
