@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router';
 import './paymentDetails.css'
 import Layout from '../Layout/Layout'
 
@@ -10,9 +9,6 @@ function PaymentDetails() {
         setSelectedRelation(event.target.value);
     };
 
-    const handleSubmit = () => {
-        console.log('Processing relation with type:', selectedRelation);
-    };
     const handleBack = () => {
     };
 
