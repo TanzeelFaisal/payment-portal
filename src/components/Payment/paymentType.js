@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router';
-import './paymentType.css'
 import Layout from '../Layout/Layout'
 
 function PaymentType() {
@@ -11,7 +10,6 @@ function PaymentType() {
   };
 
   const handleSubmit = () => {
-    // Add your payment processing logic here based on selectedPaymentType
     console.log('Processing payment with type:', selectedPaymentType);
   };
 

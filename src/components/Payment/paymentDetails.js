@@ -13,6 +13,11 @@ function PaymentDetails() {
     const handleSubmit = () => {
         console.log('Processing relation with type:', selectedRelation);
     };
+    const handleBack = () => {
+    };
+
+    const handleProceed = () => {
+    };
 
     return (
         <Layout>
@@ -66,8 +71,13 @@ function PaymentDetails() {
                     <option value="brother">Brother</option>
                     <option value="mother">Mother</option>
                 </select>
-                <div className='d-flex justify-content-center'>
-                    <button class="btn w-50 btn-dark" type="button" onClick={< Navigate to='/' />}>Submit</button>
+                <div className="d-flex justify-content-center mt-3">
+                    <button className="btn btn-secondary me-2" type="button" onClick={handleBack}>
+                        Back
+                    </button>
+                    <button className="btn btn-primary" type="button" onClick={handleProceed}>
+                        Proceed
+                    </button>
                 </div>
             </div>
         </Layout>
