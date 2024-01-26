@@ -4,15 +4,37 @@ import Layout from '../Layout/Layout'
 
 function PaymentDetails() {
     const [selectedRelation, setSelectedRelation] = useState('');
+    const [Amount, setAmount] = useState(0);
 
     const handleRelationChange = (event) => {
         setSelectedRelation(event.target.value);
+    };
+
+    const handleAmountChange = (event) => {
+        setAmount(Number(event.target.value)); // Step 2: Update amount state
     };
 
     const handleBack = () => {
     };
 
     const handleProceed = () => {
+        fetch('http://localhost:3001/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                amount: Amount
+            })
+        }).then(res => {
+            if (res.ok) return res.json()
+            return res.json().then(json => Promise.reject(json))
+        }).then(({ url }) => {
+            console.log(url)
+            // window.location = url
+        }).catch(e => {
+            console.error(e.error)
+        })
     };
 
     return (
@@ -55,7 +77,7 @@ function PaymentDetails() {
                         <label for="challanNo">Challan No:</label>
                     </div>
                     <div className='col-lg-6 mb-3 form-floating'>
-                        <input type="text" class="form-control" id="amount" placeholder='name'/>
+                        <input type="text" class="form-control" id="amount" placeholder='name' onChange={handleAmountChange}/>
                         <label for="amount">Amount:</label>
                     </div>
                 </div>
