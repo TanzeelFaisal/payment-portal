@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import './paymentDetails.css'
-import Layout from '../Layout/Layout'
+import Layout from '../../components/Layout/Layout'
 
 function PaymentDetails() {
     const [selectedRelation, setSelectedRelation] = useState('');
@@ -38,6 +38,14 @@ function PaymentDetails() {
                         <input type="text" className="form-control" id="studentCNIC" placeholder='name'/>
                         <label for="studentCNIC">Student CNIC:</label>
                     </div>
+                    <div className='col-lg-6 mb-3 form-floating'>
+                        <input type="password" className="form-control" id="password" placeholder='name'/>
+                        <label for="password">Password:</label>
+                    </div>
+                    <div className='col-lg-6 mb-3 form-floating'>
+                        <input type="password" className="form-control" id="confirmPassword" placeholder='name'/>
+                        <label for="confirmPassword">Confirm Password:</label>
+                    </div>
                     <div className='mb-3'>
                         <span className='input-group-text text-center'>Payment secured with STRIPE via Askari and Habib bank ltd.</span>
                     </div>
@@ -50,7 +58,7 @@ function PaymentDetails() {
                         <label for="term">Term:</label>
                     </div>
                 </div>
-                <div className="text-center mt-3"><h4><label htmlFor="relation">Relation</label></h4></div>
+                <div className="text-center"><h4><label htmlFor="relation">Relation</label></h4></div>
                 <select className="form-select" name="relation" id="relation" value={selectedRelation} onChange={handleRelationChange}>
                     <option value="">Select Relationship with Student</option>
                     <option value="self">Self</option>
@@ -59,7 +67,7 @@ function PaymentDetails() {
                     <option value="mother">Mother</option>
                 </select>
                 <div className='d-flex justify-content-center'>
-                    <button class="btn w-50 btn-dark" type="button" onClick={handleSubmit}>Submit</button>
+                    <button class="btn w-50 btn-dark mt-3" type="button" onClick={handleSubmit}>Submit</button>
                 </div>
                 { redirect && < Navigate to='/'/> }
             </div>

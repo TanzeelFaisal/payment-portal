@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PaymentType from '../Payment/paymentType'
-import PaymentDetails from '../Payment/paymentDetails'
+import PaymentType from '../../containers/PaymentType/paymentType'
+import PaymentDetails from '../../containers/PaymentDetails/paymentDetails'
 
 function App() {
   return (

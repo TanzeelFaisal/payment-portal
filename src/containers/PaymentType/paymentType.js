@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router';
-import Layout from '../Layout/Layout'
+import Layout from '../../components/Layout/Layout'
 
 function PaymentType() {
   const [Amount, setAmount] = useState(0);
