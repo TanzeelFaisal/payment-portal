@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './paymentDetails.css'
 import Layout from '../Layout/Layout'
 
 function PaymentDetails() {
     const [selectedRelation, setSelectedRelation] = useState('');
     const [Amount, setAmount] = useState(0);
+    const location = useLocation();
+    const { id, text } = location.state;
 
     const handleRelationChange = (event) => {
-        setSelectedRelation(event.target.value);
+        setSelectedRelation(event.target.value)
     };
 
     const handleAmountChange = (event) => {
-        setAmount(Number(event.target.value)); // Step 2: Update amount state
+        setAmount(Number(event.target.value))
     };
 
-    const handleBack = () => {
-    };
+    const handleBack = () => {};
 
     const handleProceed = () => {
         fetch('http://localhost:3001/create-checkout-session', {
@@ -24,14 +26,16 @@ function PaymentDetails() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                amount: Amount
+                amount: Amount,
+                id: id,
+                paymentType: text,
             })
         }).then(res => {
             if (res.ok) return res.json()
             return res.json().then(json => Promise.reject(json))
         }).then(({ url }) => {
-            console.log(url)
-            // window.location = url
+            // console.log(Amount, text)
+            window.location = url
         }).catch(e => {
             console.error(e.error)
         })
