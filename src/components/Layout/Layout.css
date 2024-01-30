@@ -29,6 +29,15 @@
     flex-direction: column;
 }
 
+.details-container label {
+    margin-left: 10px;
+    letter-spacing: 1px;
+}
+
+.details-container span {
+    letter-spacing: 2px;
+}
+
 button {
     margin-top: 10px;
 }
