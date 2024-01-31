@@ -3,6 +3,7 @@ import Layout from '../../components/Layout/Layout';
 
 function PaymentType() {
   const [amount, setAmount] = useState(0);
+  const [challanNo, setChallanNo] = useState('');
   const [selectedPaymentTypeId, setSelectedPaymentTypeId] = useState(0);
   const [selectedPaymentType, setSelectedPaymentType] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -21,6 +22,10 @@ function PaymentType() {
     setSelectedPaymentType(event.target.options[selectedIndex].text);
   };
 
+  const handleChallanNoChange = (event) => {
+    setChallanNo(event.target.value)
+  }
+
   const handleAmountChange = (event) => {
     setAmount(Number(event.target.value));
   };
@@ -34,6 +39,7 @@ function PaymentType() {
     let userData = JSON.parse(localStorage.getItem('userData'));
     userData.user.amount = amount;
     userData.user.paymentType = selectedPaymentType;
+    userData.user.challanNo = challanNo;
     localStorage.setItem('userData', JSON.stringify(userData));
 
     fetch('http://localhost:3001/create-checkout-session', {
@@ -83,7 +89,7 @@ function PaymentType() {
         </select>
         <div className="row details-container mt-3">
           <div className="col-lg-6 mb-3 form-floating">
-            <input type="text" className="form-control" id="challanNo" placeholder="name" />
+            <input type="text" className="form-control" id="challanNo" placeholder="name" onChange={handleChallanNoChange}/>
             <label htmlFor="challanNo">Challan No:</label>
           </div>
           <div className="col-lg-6 mb-3 form-floating">

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '../../components/Layout/Layout';
+import Receipt from '../../components/Receipt/Receipt';
 
 function PaymentSuccess() {
   useEffect(() => {
@@ -9,6 +10,9 @@ function PaymentSuccess() {
   const savePaymentData = async () => {
     try {
       const userData = JSON.parse(localStorage.getItem('userData'));
+      const date = new Date().toLocaleDateString()
+      userData.user.date = date
+      localStorage.setItem('userData', JSON.stringify(userData))
 
       const response = await fetch('http://localhost:3001/save-payment-data', {
         method: 'POST',
@@ -22,7 +26,7 @@ function PaymentSuccess() {
           amount: userData.user.amount,
           paymentType: userData.user.paymentType,
           paidStatus: true,
-          dateTime: new Date().toLocaleDateString(),
+          date: date,
         }),
       });
       if (response.ok) {
@@ -41,6 +45,7 @@ function PaymentSuccess() {
         <div className="alert alert-success" role="alert">
           Payment was successful!
         </div>
+        <Receipt />
         <button className="btn btn-primary" onClick={() => window.location = '/select-payment'}>
           Back to Payment
         </button>

@@ -1,0 +1,121 @@
+.fa-download {
+    cursor: pointer;
+}
+
+#invoice-POS {
+    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    width: 88mm;
+    background: #FFF;
+}
+
+
+#invoice-POS h1 {
+    font-size: 3em;
+    color: #222;
+}
+
+#invoice-POS h2 {
+    font-size: 24px;
+}
+
+#table h2 {
+    font-size: 16px;
+}
+
+
+
+#invoice-POS h3 {
+    font-size: 2.4em;
+    font-weight: 300;
+    line-height: 2em;
+}
+
+#invoice-POS p {
+    color: #666;
+    line-height: 1.2em;
+}
+
+#top,
+#mid,
+#bot {
+    /* Targets all id with 'col-' */
+    border-bottom: 1px solid #EEE;
+}
+
+#top {
+    min-height: 200px;
+}
+
+#mid {
+    min-height: 100px;
+    
+}
+
+#mid p {
+    background: #EEE;
+    margin: 1;
+    font-size: 16px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
+#mid span {
+    float: right;
+}
+
+#bot {
+    min-height: 100px;
+}
+
+#top .logo {
+    height: 120px;
+    width: 120px;
+}
+
+#invoice-POS .info {
+    display: block;
+    margin-left: 0;
+}
+
+#invoice-POS .title {
+    float: right;
+}
+
+#table {
+    font-size: 16px;
+}
+
+#table > div {
+    display: flex;
+    font-size: 16px;
+    justify-content: space-between;
+    border-bottom: 1px solid #EEE;
+}
+
+#table tr td:nth-child(2) {
+    float: right;
+}
+
+#invoice-POS .title p {
+    text-align: right;
+}
+
+#invoice-POS table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#invoice-POS .tabletitle {
+    font-size: 16px;
+    background: #EEE;
+}
+
+#legalcopy {
+    margin-top: 5mm;
+}
+
+.end {
+    font-size: 16px;
+    text-align: center;
+}
