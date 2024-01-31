@@ -21,7 +21,7 @@ function PaymentSuccess() {
           studentEmail: userData.user.studentEmail,
           amount: userData.user.amount,
           paymentType: userData.user.paymentType,
-          dateTime: new Date(),
+          dateTime: new Date().toISOString(),
         }),
       });
       if (response.ok) {
