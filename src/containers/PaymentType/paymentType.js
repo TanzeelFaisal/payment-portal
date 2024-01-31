@@ -34,7 +34,7 @@ function PaymentType() {
         amount: amount,
         id: selectedPaymentTypeId,
         paymentType: selectedPaymentType,
-        userEmail: userEmail, // Pass user's email to the server
+        userEmail: userEmail,
       }),
     })
       .then((res) => {

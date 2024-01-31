@@ -27,7 +27,7 @@ function Home() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('userEmail', email);
-        navigate('/payment-type');
+        navigate('/select-payment');
       } else {
         const errorData = await response.json();
         alert(errorData.error);

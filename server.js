@@ -38,6 +38,9 @@ app.post('/login', async (req, res) => {
         if (user.password !== password) {
             return res.status(401).json({ error: 'Incorrect email or password' });
         }
+        if (!user.approved_status) {
+            return res.status(403).json({ error: 'Your account is pending approval' });
+        }
         res.status(200).json({ message: 'Login successful', user: user });
     } catch (error) {
         console.error('Error during login:', error);
