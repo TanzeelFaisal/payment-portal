@@ -26,7 +26,7 @@ function Home() {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userData', JSON.stringify(data));
         navigate('/select-payment');
       } else {
         const errorData = await response.json();
@@ -57,7 +57,7 @@ function Home() {
                 <label htmlFor="password">Password</label>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                {/* <Link to="/forgot-password">Forgot your password?</Link> */}
+                <Link to="/forgot-password">Forgot your password?</Link>
                 <button className="btn btn-primary" type="button" onClick={handleSubmit}>
                   Login
                 </button>
