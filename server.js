@@ -26,6 +26,39 @@ connectDb(err => {
     }
 })
 
+app.get('/users', async (req, res) => {
+    try {
+        const users = await db.collection('users')
+                                .find()
+                                .toArray();
+        res.status(200).json({ users });
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.post('/approve-user', async (req, res) => {
+    const userId = req.body.id;
+    
+    try {
+        const user = await db.collection('users').findOneAndUpdate(
+            { _id: new ObjectId(userId) },
+            { $set: { approved_status: true } },
+            { returnOriginal: false }
+        );
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'User approved successfully', user: user.value });
+    } catch (error) {
+        console.error('Error approving user:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -76,6 +109,26 @@ app.post('/submit-payment-details', async (req, res) => {
     }
 });
 
+app.post('/save-payment-data', async (req, res) => {
+    const { studentName, studentRegNo, studentEmail, amount, paymentType, date } = req.body;
+  
+    try {
+      const result = await db.collection('payments').insertOne({
+        studentName,
+        studentRegNo,
+        studentEmail,
+        amount,
+        paymentType,
+        date,
+      });
+  
+      res.status(201).json({ message: 'Payment data saved successfully' });
+    } catch (error) {
+      console.error('Error saving payment data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 app.post('/create-checkout-session', async (req, res) => {
     try {
         const session = await stripe.checkout.sessions.create({
@@ -91,7 +144,7 @@ app.post('/create-checkout-session', async (req, res) => {
                 },
                 quantity: 1
             }],
-            success_url: `${process.env.CLIENT_URL}/select-payment`,
+            success_url: `${process.env.CLIENT_URL}/payment-success`,
             cancel_url: `${process.env.CLIENT_URL}/select-payment`
         })
         res.json({url: session.url})
