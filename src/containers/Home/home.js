@@ -57,7 +57,7 @@ function Home() {
                 <label htmlFor="password">Password</label>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <Link to="/forgot-password">Forgot your password?</Link>
+                <div></div>
                 <button className="btn btn-primary" type="button" onClick={handleSubmit}>
                   Login
                 </button>

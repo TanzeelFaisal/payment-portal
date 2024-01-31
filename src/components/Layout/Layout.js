@@ -3,7 +3,9 @@ import './Layout.css';
 
 const Layout = ({ children }) => (
   <div class="layout">
-    <div class="header"/>
+    <div class="header">
+      <img src=''/>
+    </div>
     <div className='main-container'>
       {children}
     </div>

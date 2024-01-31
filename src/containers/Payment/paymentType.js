@@ -6,6 +6,7 @@ function PaymentType() {
   const [selectedPaymentTypeId, setSelectedPaymentTypeId] = useState(0);
   const [selectedPaymentType, setSelectedPaymentType] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const minAmount = {1: 20000, 2: 600, 3: 6000}
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
@@ -25,6 +26,11 @@ function PaymentType() {
   };
 
   const handleProceed = () => {
+    if (amount < minAmount[selectedPaymentTypeId]) {
+      alert('Amount lesser than minimum')
+      return
+    }
+
     let userData = JSON.parse(localStorage.getItem('userData'));
     userData.user.amount = amount;
     userData.user.paymentType = selectedPaymentType;
@@ -81,7 +87,7 @@ function PaymentType() {
             <label htmlFor="challanNo">Challan No:</label>
           </div>
           <div className="col-lg-6 mb-3 form-floating">
-            <input type="text" className="form-control" id="amount" placeholder="name" onChange={handleAmountChange} />
+            <input type="number" min={minAmount[selectedPaymentTypeId]} className="form-control" id="amount" placeholder="name" onChange={handleAmountChange} />
             <label htmlFor="amount">Amount:</label>
           </div>
         </div>

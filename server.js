@@ -14,9 +14,9 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 let db = null
 
 const minAmount = new Map([
-    [1, { priceInPaisas: 2000000, name: "Tuition Fee, Hostel Charges, and University Dues" }],
-    [2, { priceInPaisas: 60000, name: "Test Fee" }],
-    [3, { priceInPaisas: 600000, name: "Clearance Fee" }],
+    [1, { priceInPaisas: 20000, name: "Tuition Fee, Hostel Charges, and University Dues" }],
+    [2, { priceInPaisas: 600, name: "Test Fee" }],
+    [3, { priceInPaisas: 6000, name: "Clearance Fee" }],
 ])
 
 connectDb(err => {
@@ -123,7 +123,7 @@ app.post('/submit-payment-details', async (req, res) => {
 });
 
 app.post('/save-payment-data', async (req, res) => {
-    const { studentName, studentRegNo, studentEmail, amount, paymentType, date } = req.body;
+    const { studentName, studentRegNo, studentEmail, amount, paymentType, paidStatus, date } = req.body;
   
     try {
       const result = await db.collection('payments').insertOne({
@@ -132,7 +132,8 @@ app.post('/save-payment-data', async (req, res) => {
         studentEmail,
         amount,
         paymentType,
-        date: new Date(date),
+        paidStatus,
+        date: new Date(),
       });
   
       res.status(201).json({ message: 'Payment data saved successfully' });
@@ -153,7 +154,7 @@ app.post('/create-checkout-session', async (req, res) => {
                     product_data: {
                         name: req.body.paymentType
                     },
-                    unit_amount: Math.max((req.body.amount * 100), minAmount.get(req.body.id).priceInPaisas)
+                    unit_amount: req.body.amount * 100
                 },
                 quantity: 1
             }],
