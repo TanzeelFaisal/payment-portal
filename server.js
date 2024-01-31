@@ -38,6 +38,19 @@ app.get('/users', async (req, res) => {
     }
 });
 
+app.get('/payments', async (req, res) => {
+    try {
+      const payments = await db.collection('payments')
+                              .find()
+                              .sort({ dateTime: -1 }) // Sort by dateTime in descending order
+                              .toArray();
+      res.status(200).json({ payments });
+    } catch (error) {
+      console.error('Error fetching payments:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
 app.post('/approve-user', async (req, res) => {
     const userId = req.body.id;
     
@@ -119,7 +132,7 @@ app.post('/save-payment-data', async (req, res) => {
         studentEmail,
         amount,
         paymentType,
-        date,
+        date: new Date(date),
       });
   
       res.status(201).json({ message: 'Payment data saved successfully' });
